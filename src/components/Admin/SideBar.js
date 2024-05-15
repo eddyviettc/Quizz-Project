@@ -39,7 +39,7 @@ const SideBar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        Hoi Dan IT
+                        Reverie
                     </div>
                 </SidebarHeader>
 

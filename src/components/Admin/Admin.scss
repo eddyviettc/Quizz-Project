@@ -13,8 +13,10 @@
 
         }
         .admin-main{
-            border: 1px solid green;
-
+            .user-pagination{
+                display: flex;
+                justify-content: center;
+            }
         }
     }
 }
