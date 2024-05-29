@@ -42,7 +42,6 @@ const ManageUser = () => {
     const fetchListUsersWithPaginate = async (page) => {
         let res = await getUserWithPaginate(page, LIMIT_USER)
         if (res.EC === 0) {
-            console.log('res.data = ', res.DT)
             setListUser(res.DT.users)
             setPageCount(res.DT.totalPages)
         }
@@ -98,6 +97,9 @@ const ManageUser = () => {
                     fetchListUsers={fetchListUsers}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
+                    fetchListUsersWithPaginate={fetchListUsersWithPaginate}
+
+
                 />
                 <ModalUpdateUser
                     show={showModalUpdateUser}
