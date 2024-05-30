@@ -13,10 +13,9 @@ const INITIAL_STATE = {
 const userReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case 'FETCH_USER_LOGIN_SUCCESS':
-            console.log('check action', action)
             return {
                 ...state, account: {
-                    acces_token: action?.payload?.DT?.access_token,
+                    access_token: action?.payload?.DT?.access_token,
                     refresh_token: action?.payload?.DT?.refresh_token,
                     username: action?.payload?.DT?.username,
                     image: action?.payload?.DT?.image,
