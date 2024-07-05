@@ -12,7 +12,6 @@ const ListQuiz = () => {
         const res = await getQuizByUser()
         if (res && res.EC === 0) {
             setArrQuiz(res.DT)
-            console.log('check res', res.DT)
 
         }
     }
@@ -29,9 +28,8 @@ const ListQuiz = () => {
                                 <button
                                     href="#"
                                     className="btn btn-primary"
-                                    onClick={() => navigate(`/quiz/${quiz.id}`)}
+                                    onClick={() => navigate(`/quiz/${quiz.id}`, { state: { quizTitle: quiz.description } })}
                                 >Start now
-
                                 </button>
                             </div>
                         </div>
