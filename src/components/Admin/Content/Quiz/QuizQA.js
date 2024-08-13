@@ -6,7 +6,10 @@ import { FaMinusCircle, FaCloudUploadAlt } from "react-icons/fa";
 import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash'
 import Lightbox from "react-awesome-lightbox";
-import { getAllQuizForAdmin, postCreateNewAnswerForQuestion, postCreateNewQuestionForQuiz } from "../../../../services/apiService"
+import {
+    getAllQuizForAdmin, postCreateNewAnswerForQuestion,
+    postCreateNewQuestionForQuiz, getQuizWithQA
+} from "../../../../services/apiService"
 import { toast } from 'react-toastify';
 
 
@@ -45,6 +48,39 @@ const QuizQA = (props) => {
     useEffect(() => {
         fetchQuiz()
     }, [])
+    useEffect(() => {
+        if (selectedQuiz && selectedQuiz.value) {
+            fetchQuizwithQA()
+        }
+    }, [selectedQuiz])
+
+
+    function urltoFile(url, filename, mimeType) {
+        return (fetch(url)
+            .then(function (res) { return res.arrayBuffer(); })
+            .then(function (buf) { return new File([buf], filename, { type: mimeType }); })
+        );
+    }
+    const fetchQuizwithQA = async () => {
+        let res = await getQuizWithQA(selectedQuiz.value)
+        if (res && res.EC === 0) {
+            //convert base64 to file obj
+            let newQA = []
+            for (let i = 0; i < res.DT.qa.length; i++) {
+                let q = res.DT.qa[i]
+                if (q.imageFile) {
+                    q.imageName = `Question - ${q.id}.png`
+                    q.imageFile = await urltoFile(`data:image/png;base64,${q.imageFile}`, `image/png`)
+                }
+                newQA.push(q)
+            }
+
+            setQuestions(newQA)
+        }
+    }
+
+
+
     const fetchQuiz = async () => {
         let res = await getAllQuizForAdmin()
         if (res && res.EC === 0) {
