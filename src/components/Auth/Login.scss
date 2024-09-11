@@ -1,4 +1,4 @@
-.register-container{
+.login-container{
     .loading-icon{
         margin-right: 7px;
         top: 2px;
@@ -14,12 +14,13 @@
         }
     }
     .header{
-        // display: flex;
         height: 45px;
-        text-align: right;
-        // justify-content: flex-end;
-        // align-items: center;
+        /* text-align: right; */
         padding: 5px 100px 0 100px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
         button{
             padding: 3px 15px;
             margin-left: 15px;

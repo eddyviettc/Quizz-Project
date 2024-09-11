@@ -1,11 +1,12 @@
-.login-container{
+.register-container{
     .header{
-        // display: flex;
         height: 45px;
-        text-align: right;
-        // justify-content: flex-end;
-        // align-items: center;
-        padding: 5px 100px 0 100px;
+    /* text-align: right; */
+    padding: 5px 100px 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
         button{
             padding: 3px 15px;
             margin-left: 15px;
